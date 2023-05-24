@@ -26,10 +26,11 @@ def toChangeAmountOfTicketsAndChangeAmountMoneyFirstButton ():
         print(amountOfMoney)
         messagebox.showinfo('Успешно', ("Вы купили билет(ы)"))
         enterFirstText.delete(0, 'end')
-        # onDisplayMoney.config(text=amountOfMoney)
+        onDisplayMoney.config(text=f"У вас на карте: {str(amountOfMoney)}")
+        onStillFirstText.config(text=f"Осталось билетов: {str(stillfirstText)}")
 
 def toChangeAmountOfTicketsAndChangeAmountMoneySecondButton ():
-    value = enterFirstText.get()
+    value = secondEnterText.get()
     intValue = int(value)
     global stillfirstText
     global stillsecondText
@@ -39,7 +40,7 @@ def toChangeAmountOfTicketsAndChangeAmountMoneySecondButton ():
         stillsecondText = stillsecondText - intValue
         messagebox.showinfo('Ошибка', ("Вы ничего не приобрели"))
         secondEnterText.delete(0, 'end')
-    elif (intValue > stillfirstText + 1):
+    elif (intValue > stillsecondText + 1):
         stillsecondText = stillsecondText - intValue
         messagebox.showinfo('Ошибка', ("Столько билетов нет"))
         secondEnterText.delete(0, 'end')
@@ -49,6 +50,8 @@ def toChangeAmountOfTicketsAndChangeAmountMoneySecondButton ():
         print(amountOfMoney)
         messagebox.showinfo('Успешно', ("Вы купили билет(ы)"))
         secondEnterText.delete(0, 'end')
+        onDisplayMoney.config(text=f"У вас на карте: {str(amountOfMoney)}")
+        onStillSecondText.config(text=f"Осталось билетов: {str(stillsecondText)}")
 
 
 # Каркас
@@ -77,17 +80,17 @@ secondText.place(x = 25, y = 100)
 priceForFirstFilm = 250
 priceForSecondFilm = 100
 
-stillFirstText = Label(window, text = f"Осталось билетов: {str(stillfirstText)}", font = ('Arial Bold', 15), fg = 'black', bg = 'white')
-stillFirstText.place(x = 200, y = 55)
+onStillFirstText = Label(window, text = f"Осталось билетов: {str(stillfirstText)}", font = ('Arial Bold', 15), fg = 'black', bg = 'white')
+onStillFirstText.place(x = 200, y = 55)
 
-stillFirstText = Label(window, text = f"Цена: {str(priceForFirstFilm)}", font = ('Arial Bold', 15), fg = 'black', bg = 'white')
-stillFirstText.place(x = 200, y = 25)
+onStillPriceFirstText = Label(window, text = f"Цена: {str(priceForFirstFilm)}", font = ('Arial Bold', 15), fg = 'black', bg = 'white')
+onStillPriceFirstText.place(x = 200, y = 25)
 
-stillFirstText = Label(window, text = 'Осталось билетов: ' + str(stillsecondText), font = ('Arial Bold', 15), fg = 'black', bg = 'white')
-stillFirstText.place(x = 200, y = 155)
+onStillSecondText = Label(window, text = 'Осталось билетов: ' + str(stillsecondText), font = ('Arial Bold', 15), fg = 'black', bg = 'white')
+onStillSecondText.place(x = 200, y = 155)
 
-stillFirstText = Label(window, text = 'Цена ' + str(priceForSecondFilm), font = ('Arial Bold', 15), fg = 'black', bg = 'white')
-stillFirstText.place(x = 200, y = 125)
+onStillPriceSecondText = Label(window, text = 'Цена ' + str(priceForSecondFilm), font = ('Arial Bold', 15), fg = 'black', bg = 'white')
+onStillPriceSecondText.place(x = 200, y = 125)
 
 # Поля для ввода
 
